@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "SLE",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
