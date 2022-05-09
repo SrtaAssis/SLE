@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupName } from '@angular/forms';
 import { ActionSheetController, IonRouterOutlet, ModalController, NavController } from '@ionic/angular';
+import { Logs } from 'selenium-webdriver';
 import { ResultadosComponent } from './resultados/resultados.component';
 
 @Component({
@@ -74,6 +75,16 @@ export class HomePage implements OnInit{
     }
   }
 
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ResultadosComponent,
+      cssClass: 'my-custom-class',
+      componentProps: {value: this.resultados}
+    });   
+    return await modal.present();
+  
+  }
+
   escalaDe3(){
     var A0:number = Number((document.getElementById('conta_10') as HTMLInputElement).value)/Number((document.getElementById('conta_00') as HTMLInputElement).value);
     var A1:number = Number((document.getElementById('conta_11') as HTMLInputElement).value) - A0 * Number((document.getElementById('conta_01') as HTMLInputElement).value);
@@ -143,8 +154,11 @@ export class HomePage implements OnInit{
     var R0:number = F2/F1;
     var R1:number = (D3-D2*R0)/D1;
     var R2:number = (A4-A3*R0-A2*R1)/A1;
-    var R3:number = ((Number((document.getElementById('result_0') as HTMLInputElement).value)-Number((document.getElementById('conta_03') as HTMLInputElement).value)*R0)
-    -Number((document.getElementById('conta_02') as HTMLInputElement).value)*R1-Number((document.getElementById('conta_01') as HTMLInputElement).value)*R2)/Number((document.getElementById('conta_00') as HTMLInputElement).value);
+    var R3:number = ((Number((document.getElementById('result_0') as HTMLInputElement).value)
+    -Number((document.getElementById('conta_03') as HTMLInputElement).value)*R0)
+    -Number((document.getElementById('conta_02') as HTMLInputElement).value)*R1
+    -Number((document.getElementById('conta_01') as HTMLInputElement).value)*R2)
+    /Number((document.getElementById('conta_00') as HTMLInputElement).value);
 
     this.resultados=[
       {label:'A', value: [A0.toFixed(2), A1.toFixed(2),A2.toFixed(2),A3.toFixed(2),A4.toFixed(2)]},
@@ -227,10 +241,16 @@ export class HomePage implements OnInit{
     var R0:number = K2/K1;
     var R1:number = (I3-I2*R0)/I1;
     var R2:number = (F4-F3*R0-F2*R1)/F1;
-    var R3:number = (A5-A4*R0-A3*R1-A2*R2)/A1;
-    var R4:number = ((Number((document.getElementById('result_0') as HTMLInputElement).value)-Number((document.getElementById('conta_04') as HTMLInputElement).value)*R0)
-    -Number((document.getElementById('conta_03') as HTMLInputElement).value)*R1-Number((document.getElementById('conta_02') as HTMLInputElement).value)*R2
-    -Number((document.getElementById('conta_02') as HTMLInputElement).value)*R3)/Number((document.getElementById('conta_00') as HTMLInputElement).value);
+    var R3:number = (A5-(A4*R0)-(A3*R1)-(A2*R2))/A1;
+
+    console.log(K2/K1);
+
+    var R4:number = ((Number((document.getElementById('result_0') as HTMLInputElement).value)
+    -Number((document.getElementById('conta_04') as HTMLInputElement).value)*R0)
+    -Number((document.getElementById('conta_03') as HTMLInputElement).value)*R1
+    -Number((document.getElementById('conta_02') as HTMLInputElement).value)*R2
+    -Number((document.getElementById('conta_01') as HTMLInputElement).value)*R3)
+    /Number((document.getElementById('conta_00') as HTMLInputElement).value);
 
     this.resultados=[
       {label:'0', value: [A0.toFixed(2), A1.toFixed(2),A2.toFixed(2),A3.toFixed(2),A4.toFixed(2),A5.toFixed(2)]},
@@ -358,12 +378,14 @@ export class HomePage implements OnInit{
     ///////////////////////////////////////////////////////////////
 
     var R0:number = O2/O1;
-    var R1:number = (M3-M2*R0)/D1;
-    var R2:number = (J4-J3*R0-J2*R1)/A1;
+    var R1:number = (M3-M2*R0)/M1;
+    var R2:number = (J4-J3*R0-J2*R1)/J1;
     var R3:number = (F5-F4*R0-F3*R1-F2*R2)/F1;
     var R4:number = (A6-A5*R0-A4*R1-A3*R2-A2*R3)/A1;
-    var R5:number = ((Number((document.getElementById('result_0') as HTMLInputElement).value)-Number((document.getElementById('conta_05') as HTMLInputElement).value)*R0)
-    -Number((document.getElementById('conta_04') as HTMLInputElement).value)*R1-Number((document.getElementById('conta_03') as HTMLInputElement).value)*R2
+    var R5:number = ((Number((document.getElementById('result_0') as HTMLInputElement).value)
+    -Number((document.getElementById('conta_05') as HTMLInputElement).value)*R0)
+    -Number((document.getElementById('conta_04') as HTMLInputElement).value)*R1
+    -Number((document.getElementById('conta_03') as HTMLInputElement).value)*R2
     -Number((document.getElementById('conta_02') as HTMLInputElement).value)*R3)
     -Number((document.getElementById('conta_01') as HTMLInputElement).value)*R4
     /Number((document.getElementById('conta_00') as HTMLInputElement).value);
@@ -559,8 +581,10 @@ export class HomePage implements OnInit{
     var R3:number = (L5-L4*R0-L3*R1-L2*R2)/L1;
     var R4:number = (G6-G5*R0-G4*R1-G3*R2-G2*R3)/G1;
     var R5:number = (A7-A6*R0-A5*R1-A4*R2-A3*R3-A2*R4)/A1;
-    var R6:number = ((Number((document.getElementById('result_0') as HTMLInputElement).value)-Number((document.getElementById('conta_06') as HTMLInputElement).value)*R0)
-    -Number((document.getElementById('conta_05') as HTMLInputElement).value)*R1-Number((document.getElementById('conta_04') as HTMLInputElement).value)*R2
+    var R6:number = ((Number((document.getElementById('result_0') as HTMLInputElement).value)
+    -Number((document.getElementById('conta_06') as HTMLInputElement).value)*R0)
+    -Number((document.getElementById('conta_05') as HTMLInputElement).value)*R1
+    -Number((document.getElementById('conta_04') as HTMLInputElement).value)*R2
     -Number((document.getElementById('conta_03') as HTMLInputElement).value)*R3)
     -Number((document.getElementById('conta_02') as HTMLInputElement).value)*R4
     -Number((document.getElementById('conta_01') as HTMLInputElement).value)*R5
@@ -1794,12 +1818,5 @@ export class HomePage implements OnInit{
     ];  
     this.presentModal();
   }
-async presentModal() {
-  const modal = await this.modalController.create({
-    component: ResultadosComponent,
-    cssClass: 'my-custom-class',
-    componentProps: {value: this.resultados}
-  });
-  return await modal.present();
-}
+
 }
