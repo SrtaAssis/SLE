@@ -10,10 +10,11 @@ import { ResultadosComponent } from './resultados/resultados.component';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
+
   resultados=[];
-  conta=[];
   tamanhoEscala;
   number;
+
   Escala = [
     {id:1, value: "3X3", num:3},
     {id:2, value: "4X4", num:4},
@@ -37,6 +38,7 @@ export class HomePage implements OnInit{
     this.tamanhoEscala = Array(id.num).fill(0).map((x,i)=>i);
     this.number = id.num;
   }
+  
   calcular(){
     
     console.log();
@@ -194,11 +196,11 @@ export class HomePage implements OnInit{
     var C4:number = Number((document.getElementById('conta_34') as HTMLInputElement).value) - C0 * Number((document.getElementById('conta_04') as HTMLInputElement).value);
     var C5:number = Number((document.getElementById('result_3') as HTMLInputElement).value) - C0 * Number((document.getElementById('result_0') as HTMLInputElement).value);
 
-    var D0:number = Number((document.getElementById('conta_30') as HTMLInputElement).value) / Number((document.getElementById('conta_00') as HTMLInputElement).value);
-    var D1:number = Number((document.getElementById('conta_31') as HTMLInputElement).value) - C0 * Number((document.getElementById('conta_01') as HTMLInputElement).value);
-    var D2:number = Number((document.getElementById('conta_32') as HTMLInputElement).value) - C0 * Number((document.getElementById('conta_02') as HTMLInputElement).value);
-    var D3:number = Number((document.getElementById('conta_33') as HTMLInputElement).value) - C0 * Number((document.getElementById('conta_03') as HTMLInputElement).value);
-    var D4:number = Number((document.getElementById('conta_34') as HTMLInputElement).value) - C0 * Number((document.getElementById('conta_04') as HTMLInputElement).value);
+    var D0:number = Number((document.getElementById('conta_40') as HTMLInputElement).value) / Number((document.getElementById('conta_00') as HTMLInputElement).value);
+    var D1:number = Number((document.getElementById('conta_41') as HTMLInputElement).value) - C0 * Number((document.getElementById('conta_01') as HTMLInputElement).value);
+    var D2:number = Number((document.getElementById('conta_42') as HTMLInputElement).value) - C0 * Number((document.getElementById('conta_02') as HTMLInputElement).value);
+    var D3:number = Number((document.getElementById('conta_43') as HTMLInputElement).value) - C0 * Number((document.getElementById('conta_03') as HTMLInputElement).value);
+    var D4:number = Number((document.getElementById('conta_44') as HTMLInputElement).value) - C0 * Number((document.getElementById('conta_04') as HTMLInputElement).value);
     var D5:number = Number((document.getElementById('result_4') as HTMLInputElement).value) - C0 * Number((document.getElementById('result_0') as HTMLInputElement).value);
    
     ///////////////////////////////////////////////////////////////
@@ -213,13 +215,13 @@ export class HomePage implements OnInit{
     var G1:number = C2 - (G0 * A2);
     var G2:number = C3 - (G0 * A3);
     var G3:number = C4 - (G0 * A4);
-    var G4:number = C5 - (G0 * A4);
+    var G4:number = C5 - (G0 * A5);
 
     var H0:number = D1/A1;
     var H1:number = D2 - (H0 * A2);
     var H2:number = D3 - (H0 * A3);
     var H3:number = D4 - (H0 * A4);
-    var H4:number = D5 - (H0 * A4);
+    var H4:number = D5 - (H0 * A5);
     
     ///////////////////////////////////////////////////////////////
     var I0:number = G1/F1;
@@ -239,11 +241,9 @@ export class HomePage implements OnInit{
     ///////////////////////////////////////////////////////////////
 
     var R0:number = K2/K1;
-    var R1:number = (I3-I2*R0)/I1;
-    var R2:number = (F4-F3*R0-F2*R1)/F1;
+    var R1:number = (I3-(I2*R0))/I1;
+    var R2:number = (F4-(F3*R0)-(F2*R1))/F1;
     var R3:number = (A5-(A4*R0)-(A3*R1)-(A2*R2))/A1;
-
-    console.log(K2/K1);
 
     var R4:number = ((Number((document.getElementById('result_0') as HTMLInputElement).value)
     -Number((document.getElementById('conta_04') as HTMLInputElement).value)*R0)
